@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <li><a href="projects.html">Projects</a></li>
           <li><a href="journal.html">Journal</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="about.html">Reflections</a></li>
         </ul>
       </nav>
       <div class="theme-switch-wrapper">🌞

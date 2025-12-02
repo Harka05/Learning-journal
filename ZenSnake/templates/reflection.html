@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write Reflection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <h1>Daily Reflection</h1>
+</header>
+
+<main>
+  <section class="game-section">
+    <textarea id="reflectionText" rows="6" placeholder="Write your thoughts..."></textarea>
+
+    <div class="buttons">
+      <button id="saveReflection">Save Reflection</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Zen Snake</p>
+</footer>
+
+<script>
+document.getElementById("saveReflection").onclick = () => {
+    const text = document.getElementById("reflectionText").value;
+
+    fetch("/save_reflection", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ text })
+    }).then(res => res.json())
+      .then(data => {
+          alert(data.message);
+          const div = document.createElement("div");
+          div.className = "reflection-card";
+          div.textContent = text;
+          document.querySelector("section.game-section").appendChild(div);
+          document.getElementById("reflectionText").value = "";
+      });
+};
+
+</script>
+
+</body>
+</html>
