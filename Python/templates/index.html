@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Learning Journal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+
+<body>
+
+<header>
+    <h1>My Learning Journal</h1>
+</header>
+
+<div class="container">
+
+    <a href="{{ url_for('entry_reflection') }}">
+        <button class="main-btn">➕ New Reflection</button>
+    </a>
+
+    <h2>Search & Tools</h2>
+
+    <input type="text" id="filter-keyword" placeholder="Search reflections...">
+    <button id="filter-btn" class="main-btn">Filter</button>
+    <button id="export-btn" class="main-btn">Export All</button>
+
+    <h2 id="entry-count"></h2>
+
+    <div id="journal-entries"></div>
+</div>
+
+<footer>
+    © 2025 Learning Journal
+</footer>
+
+</body>
+</html>

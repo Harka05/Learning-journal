@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Write Reflection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>New Reflection Entry</h1>
+</header>
+
+<div class="container">
+
+    <form method="POST">
+        <textarea name="reflection" placeholder="Write your thoughts here..." required></textarea>
+        <br>
+        <button class="main-btn" type="submit">Save Reflection</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">
+        <button class="main-btn">⬅ Back to Journal</button>
+    </a>
+
+</div>
+
+<footer>
+    © 2025 Learning Journal
+</footer>
+
+</body>
+</html>

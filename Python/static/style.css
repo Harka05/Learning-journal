@@ -1,0 +1,106 @@
+/* Your original style */
+body {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  background-color: #fafafa;
+  color: #222;
+}
+
+header, footer {
+  background-color: #5f37ff;
+  color: white;
+  padding: 1rem;
+}
+
+footer {
+  margin-top: 2rem;
+}
+
+.game-section {
+  margin: 2rem auto;
+  max-width: 420px;
+}
+
+#gameCanvas {
+  border: 2px solid #5f37ff;
+  background-color: #f9f9ff;
+}
+
+.info p {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: #5f37ff;
+}
+
+.buttons button {
+  background-color: #5f37ff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.buttons button:hover {
+  background-color: #2e026d;
+}
+
+/* --------------------
+   New Styles for Journal
+-----------------------*/
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  text-align: left;
+  padding: 1rem;
+}
+
+h1, h2 {
+  color: #5f37ff;
+  text-align: center;
+}
+
+button, input[type="text"], textarea {
+  font-family: inherit;
+}
+
+button.main-btn {
+  background-color: #5f37ff;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0.4rem 0;
+}
+
+button.main-btn:hover {
+  background-color: #2e026d;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 2px solid #5f37ff;
+  border-radius: 6px;
+  margin-bottom: 0.6rem;
+}
+
+textarea {
+  width: 100%;
+  height: 160px;
+  padding: 0.8rem;
+  border: 2px solid #5f37ff;
+  border-radius: 6px;
+}
+
+.entry {
+  background: white;
+  border-left: 4px solid #5f37ff;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px #ddd;
+}

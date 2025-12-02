@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ZenSnake</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/zensnake.js') }}" defer></script>
+</head>
+
+<body>
+
+<header>
+    <h1>ZenSnake — Score & Quotes</h1>
+</header>
+
+<div class="container">
+
+    <h2>Add Score</h2>
+    <input id="score-input" type="number" placeholder="Enter score">
+    <button id="add-score-btn" class="main-btn">Add Score</button>
+
+    <h2>Add Favorite Quote</h2>
+    <input id="quote-input" type="text" placeholder="Enter a meaningful quote">
+    <button id="add-quote-btn" class="main-btn">Save Quote</button>
+
+    <h2>Scores</h2>
+    <ul id="scores-list"></ul>
+
+    <h2>Favorite Quotes</h2>
+    <ul id="favorites-list"></ul>
+
+</div>
+
+<footer>
+    © 2025 ZenSnake
+</footer>
+
+</body>
+</html>
