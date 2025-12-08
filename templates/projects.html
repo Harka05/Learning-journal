@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harka | Projects</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
       <h2>Projects</h2>
       <div class="project-grid">
         <div class="project-card">
-          <img src="images/project1.jpg" alt="Temperature converter">
+          <img src="/static/images/project1.jpg" alt="Temperature converter">
           <h3>Temperature converter</h3>
           <p>A responsive temperature converter that allows users to convert between Celsius, Fahrenheit, and Kelvin.
             Built with JavaScript for real-time conversion.</p>
@@ -25,7 +25,7 @@
 
         <div class="project-grid">
           <div class="project-card">
-            <img src="images/BloodinNeed.png" alt="Blood in Need">
+            <img src="/static/images/BloodinNeed.png" alt="Blood in Need">
             <h3>Blood in Need</h3>
             <p>
               A collaborative project with Bipin Sunar. I contributed to HTML and CSS design, creating responsive
@@ -37,10 +37,13 @@
         </div>
 
         <div class="project-grid">
-          <div class="project-card" onclick="window.open('https://harka101.pythonanywhere.com/', '_blank')">
-            <img src="./images/snake.png" alt="Zen Snake Game">
-            <h3>Zen Snake – Mindful Game</h3>
-            <p>A relaxing Python-powered Snake game with quotes and reflections.</p>
+          <div class="project-card">
+            <a href="/zensnake">
+
+              <img src="/static/images/snake.png" alt="Zen Snake Game">
+              <h3>Zen Snake – Mindful Game</h3>
+              <p>A relaxing Python-powered Snake game with quotes and reflections.</p>
+            </a>
           </div>
 
 
@@ -56,9 +59,7 @@
   </footer>
 
 
-  <script src="./js/script.js"></script>
-
-
+  <script src="/static/js/script.js"></script>
 
 </body>
 

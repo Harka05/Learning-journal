@@ -22,6 +22,10 @@ def safe_save(filename, data):
 def home():
     return render_template("index.html")
 
+@app.route("/journal")
+def journal():
+    return render_template("journal.html")
+
 
 # ---------- ZENSNAKE GAME ----------
 @app.route("/zensnake")
@@ -31,22 +35,22 @@ def zensnake():
 
 @app.route('/save', methods=['POST'])
 def save_score():
-    data = safe_load("data.json")
+    data = safe_load("backend/data.json")
     score = request.json.get("score")
 
     data["scores"].append(score)
-    safe_save("data.json", data)
+    safe_save("backend/data.json", data)
 
     return jsonify({"message": "Score saved!"})
 
 
 @app.route('/favorite', methods=['POST'])
 def favorite_quote():
-    data = safe_load("data.json")
+    data = safe_load("backend/data.json")
     quote = request.json.get("quote")
 
     data["favorites"].append(quote)
-    safe_save("data.json", data)
+    safe_save("backend/data.json", data)
 
     return jsonify({"message": "Quote saved!"})
 
@@ -59,21 +63,23 @@ def reflection_page():
 @app.route('/save_reflection', methods=['POST'])
 def save_reflection():
     # Load existing reflections
-    with open('reflections.json', 'r') as f:
+    with open('backend/reflections.json', 'r') as f:
         data = json.load(f)
 
     # Get text from request
     text = request.json.get('text')
+    name = request.json.get('name')
 
     # Create new reflection with date
     new_reflection = {
         "text": text,
-        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "name": name
     }
 
     # Append and save
     data['reflections'].append(new_reflection)
-    with open('reflections.json', 'w') as f:
+    with open('backend/reflections.json', 'w') as f:
         json.dump(data, f, indent=2)
 
     return jsonify({"message": "Reflection saved!", "reflection": new_reflection})
@@ -81,8 +87,16 @@ def save_reflection():
 # ---------- VIEW ALL REFLECTIONS ----------
 @app.route("/reflections")
 def view_reflections():
-    data = safe_load("reflections.json")
+    data = safe_load("backend/reflections.json")
     return render_template("reflections.html", reflections=data["reflections"])
+
+@app.route("/projects")
+def view_projects():
+    return render_template("projects.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 
 # ---------- RUN ----------
