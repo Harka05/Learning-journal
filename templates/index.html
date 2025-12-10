@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harka | Portfolio & Learning Journal</title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<meta name="theme-color" content="#0d6efd">
+
+
+</head>
+
+<body>
+
+  <!-- HEADER (Loaded by JS) -->
+  <header id="main-header"></header>
+
+  <main>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Hi, I’m <span class="highlight">Harka Adhikari</span></h1>
+        <h2>Creative Developer | AI Enthusiast | Designer | Learner</h2>
+        <p>
+          This website is my personal space to document my journey in Application Development, 
+          showcase my projects, and reflect on what I learn each week.
+        </p>
+        <button onclick="window.location.href='projects.html'">View My Work</button>
+      </div>
+
+      <div class="hero-img">
+        <img src="/static/images/myphotopng.png" alt="Profile Photo">
+      </div>
+    </section>
+
+    <!-- ===== FEATURED PROJECTS ===== -->
+    <section class="featured">
+      <h2>Featured Projects</h2>
+
+      <div class="project-grid">
+
+        <!-- PROJECT CARD 1 -->
+        <div class="project-card">
+          <img src="/static/images/project1.jpg" alt="Project 1">
+          <h3>Temperature Converter</h3>
+          <p>
+            A responsive temperature converter that allows users to convert between 
+            Celsius, Fahrenheit, and Kelvin. Built with JavaScript for real-time conversion.
+          </p>
+        </div>
+
+        <!-- PROJECT CARD 2 -->
+        <div class="project-card">
+          <img src="/static/images/BloodinNeed.png" alt="Blood in Need Project">
+          <h3>Blood in Need</h3>
+          <p>
+            A collaborative project with Bipin Sunar. I contributed to UI design and UX improvements.
+            Helps users locate nearby blood banks and hospitals efficiently.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (Loaded by JS) -->
+  <footer id="main-footer"></footer>
+
+  <!-- SCRIPTS -->
+  <!-- <script src="/static/js/script.js"></script> -->
+   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("/static/js/sw.js")
+      .then(() => console.log("Service Worker registered"))
+      .catch(err => console.log("SW registration failed:", err));
+}
+</script>
+
+
+</body>
+</html>

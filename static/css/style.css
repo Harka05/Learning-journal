@@ -10,6 +10,7 @@ body {
   background-color: #fafafa;
   color: #222;
   line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* HEADER */
@@ -441,6 +442,182 @@ body {
   border: none;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header, footer {
+  padding: 1rem 2rem;
+  color: white;
+}
+
+header {
+  background: linear-gradient(90deg, #2e026d, #5f37ff);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+footer {
+  background-color: #2e026d;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+/* ================== BUTTONS ================== */
+.buttons {
+  margin: 1.5rem 0;
+}
+
+.buttons button, .buttons a button {
+  background-color: #5f37ff;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+.buttons button:hover, .buttons a button:hover {
+  background-color: #2e026d;
+}
+
+/* ================== HERO / MAIN SECTIONS ================== */
+.game-section {
+  max-width: 450px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* ================== SNAKE GAME ================== */
+#gameCanvas {
+  border: 2px solid #5f37ff;
+  background-color: #f9f9ff;
+  display: block;
+  margin: 1rem auto;
+}
+
+.info p {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: #5f37ff;
+}
+
+/* ================== REFLECTION PAGES ================== */
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.reflection-card {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 5px solid #5f37ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ================== JOURNAL TABLES (Optional) ================== */
+.journal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+.journal th, .journal td {
+  border: 1px solid #ccc;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.journal th {
+  background-color: #5f37ff;
+  color: white;
+}
+
+.journal tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.journal tr:hover {
+  background-color: #e0d4ff;
+}
+
+/* ================== DARK MODE ================== */
+.dark-mode {
+  background-color: #121212;
+  color: #eaeaea;
+}
+
+.dark-mode header, .dark-mode footer {
+  background-color: #1f1f1f;
+}
+
+.dark-mode a {
+  color: #bb86fc;
+}
+
+.dark-mode textarea {
+  background-color: #1f1f1f;
+  color: #f2f2f2;
+  border: 1px solid #444;
+}
+
+.dark-mode .reflection-card {
+  background-color: #1f1f1f;
+  border-left: 5px solid #bb86fc;
+  color: #f2f2f2;
+}
+
+.game-section {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 768px) {
+  .game-section {
+    padding: 0.5rem;
+  }
+
+  #gameCanvas {
+    width: 90%;
+    height: auto;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .buttons button, .buttons a button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+
 
 @media (max-width: 768px) {
   #motivationVideo iframe {
