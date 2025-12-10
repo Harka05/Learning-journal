@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById("main-header");
   if (header) {
     header.innerHTML = `
+    
       <nav class="navbar">
         <div class="logo">Harka</div>
         <ul>
@@ -137,6 +138,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+  if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/static/js/sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+
+
+window.addEventListener('offline', () => {
+  alert("You are offline! Your actions will sync when back online.");
+});
+
+window.addEventListener('online', () => {
+  alert("You are back online! Your data is synced.");
+});
 
 
 

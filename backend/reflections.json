@@ -1,19 +1,9 @@
 {
-  "reflections": [
-    {
-      "text": "aksdfjlsakdfjlaskdfjlsaf",
-      "date": "2025-12-07 23:03:02",
-      "name": "Sabin"
-    },
-    {
-      "text": "adsfasdf",
-      "date": "2025-12-08 00:57:13",
-      "name": "asdfsafadf"
-    },
-    {
-      "text": "this is reflection test.",
-      "date": "2025-12-08 00:57:31",
-      "name": "Harka"
-    }
-  ]
+    "reflections": [
+        {
+            "text": "This is test Reflection.",
+            "date": "2025-12-07 23:03:02",
+            "name": "Sabin"
+        }
+    ]
 }
