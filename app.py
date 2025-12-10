@@ -5,16 +5,24 @@ from datetime import datetime
 app = Flask(__name__)
 
 # ------------------------------------
-#   PATHS
+# PATHS
 # ------------------------------------
 REFLECTIONS_FILE = os.path.join("backend", "reflections.json")
 GAME_DATA_FILE = os.path.join("backend", "data.json")
 
+# ------------------------------------
+# FOLDER SAFETY HELPER
+# ------------------------------------
+def ensure_folder(path):
+    folder = os.path.dirname(path)
+    if not os.path.exists(folder):
+        os.makedirs(folder)
 
 # ------------------------------------
-#   SAFE LOAD / SAVE HELPERS
+# SAFE LOAD / SAVE HELPERS
 # ------------------------------------
 def safe_load_json(path, default):
+    ensure_folder(path)
     if not os.path.exists(path):
         safe_save_json(path, default)
         return default
@@ -24,14 +32,13 @@ def safe_load_json(path, default):
     except:
         return default
 
-
 def safe_save_json(path, data):
+    ensure_folder(path)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4)
 
-
 # ------------------------------------
-#   ROUTES
+# ROUTES: BASIC PAGES
 # ------------------------------------
 @app.route("/")
 def home():
@@ -57,100 +64,63 @@ def about():
 def reflection_page():
     return render_template("reflection.html")
 
-
-# ------------------------------------
-#   ZEN SNAKE GAME API
-# ------------------------------------
-@app.route('/save', methods=['POST'])
-def save_score():
-    data = safe_load_json(GAME_DATA_FILE, {"scores": [], "favorites": []})
-    score = request.json.get("score")
-
-    data["scores"].append(score)
-    safe_save_json(GAME_DATA_FILE, data)
-
-    return jsonify({"message": "Score saved!"})
-
-
-@app.route('/favorite', methods=['POST'])
-def favorite_quote():
-    data = safe_load_json(GAME_DATA_FILE, {"scores": [], "favorites": []})
-    quote = request.json.get("quote")
-
-    data["favorites"].append(quote)
-    safe_save_json(GAME_DATA_FILE, data)
-
-    return jsonify({"message": "Quote saved!"})
-
-
-# ------------------------------------
-#   REFLECTIONS: API FOR FRONTEND + PWA
-# ------------------------------------
-@app.route('/save_reflection', methods=['POST'])
-def save_reflection():
-    data = safe_load_json(REFLECTIONS_FILE, {"reflections": []})
-
-    text = request.json.get('text', '').strip()
-    name = request.json.get('name', '').strip()
-
-    # if len(text.split()) < 10:
-    #     return jsonify({"error": "Please write at least 10 words."}), 400
-
-    new_reflection = {
-        "text": text,
-        "name": name if name else "Anonymous",
-        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    }
-
-    data["reflections"].append(new_reflection)
-    safe_save_json(REFLECTIONS_FILE, data)
-
-    return jsonify({"message": "Reflection saved!", "reflection": new_reflection})
-
 @app.route("/reflections")
 def view_reflections():
     data = safe_load_json(REFLECTIONS_FILE, {"reflections": []})
     return render_template("reflections.html", reflections=data["reflections"])
 
-@app.route("/sw.js")
-def sw():
-    return app.send_static_file("js/sw.js")
+# ------------------------------------
+# ZEN SNAKE GAME API
+# ------------------------------------
+@app.route('/save', methods=['POST'])
+def save_score():
+    data = safe_load_json(GAME_DATA_FILE, {"scores": [], "favorites": []})
+    score = request.json.get("score")
+    data["scores"].append(score)
+    safe_save_json(GAME_DATA_FILE, data)
+    return jsonify({"message": "Score saved!"})
 
+@app.route('/favorite', methods=['POST'])
+def favorite_quote():
+    data = safe_load_json(GAME_DATA_FILE, {"scores": [], "favorites": []})
+    quote = request.json.get("quote")
+    data["favorites"].append(quote)
+    safe_save_json(GAME_DATA_FILE, data)
+    return jsonify({"message": "Quote saved!"})
 
 # ------------------------------------
-#  API ENDPOINTS
+# REFLECTION API (PWA FRIENDLY)
 # ------------------------------------
-
-# Fetch reflections (used by Fetch API)
 @app.route("/api/reflections")
 def api_get_reflections():
     data = safe_load_json(REFLECTIONS_FILE, {"reflections": []})
     return jsonify(data["reflections"])
 
-
-# Add a reflection (PWA offline mode will sync)
 @app.route("/api/add_reflection", methods=['POST'])
 def api_add_reflection():
     data = safe_load_json(REFLECTIONS_FILE, {"reflections": []})
-
     text = request.json.get('text', '').strip()
     name = request.json.get('name', '').strip()
-
-    # if len(text.split()) < 10:
-    #     return jsonify({"error": "Please write at least 10 words."}), 400
-
+    if not text:
+        return jsonify({"error": "Reflection text cannot be empty."}), 400
     new_reflection = {
         "text": text,
         "name": name if name else "Anonymous",
         "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
-
     data["reflections"].append(new_reflection)
     safe_save_json(REFLECTIONS_FILE, data)
+    return jsonify({"message": "Reflection saved!", "entry": new_reflection})
 
-    return jsonify({"message": "Saved!", "entry": new_reflection})
+# ------------------------------------
+# SERVICE WORKER ROUTE
+# ------------------------------------
+@app.route("/sw.js")
+def sw():
+    return app.send_static_file("js/sw.js")
 
-
-
+# ------------------------------------
+# RUN APP
+# ------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
