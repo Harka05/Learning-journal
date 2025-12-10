@@ -36,26 +36,28 @@
 
 
 <script>
+const saveUrl = "{{ url_for('save_reflection') }}";
+
 document.getElementById("saveReflection").onclick = () => {
     const text = document.getElementById("reflectionText").value;
     const name = document.getElementById("reflectionName").value;
 
-    fetch("/save_reflection", {
+    fetch(saveUrl, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ text, name })
-    }).then(res => res.json())
-      .then(data => {
-          alert(data.message);
-          const div = document.createElement("div");
-          div.className = "reflection-card";
-          div.innerHTML = `<strong>${name}</strong><br>${text}`;
-          document.querySelector("section.game-section").appendChild(div);
-          document.getElementById("reflectionText").value = "";
-          document.getElementById("reflectionName").value = "";
-      });
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        const div = document.createElement("div");
+        div.className = "reflection-card";
+        div.innerHTML = `<strong>${name}</strong><br>${text}`;
+        document.querySelector("section.game-section").appendChild(div);
+        document.getElementById("reflectionText").value = "";
+        document.getElementById("reflectionName").value = "";
+    });
 };
-
 </script>
 
 
