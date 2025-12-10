@@ -30,7 +30,7 @@ def safe_save_json(path, data):
 
 
 # ------------------------------------
-#   ROUTES: BASIC PAGES
+#   ROUTES
 # ------------------------------------
 @app.route("/")
 def home():
@@ -106,7 +106,6 @@ def save_reflection():
 
     return jsonify({"message": "Reflection saved!", "reflection": new_reflection})
 
-
 @app.route("/reflections")
 def view_reflections():
     data = safe_load_json(REFLECTIONS_FILE, {"reflections": []})
@@ -118,7 +117,7 @@ def sw():
 
 
 # ------------------------------------
-#   NEW PWA API ENDPOINTS
+#  API ENDPOINTS
 # ------------------------------------
 
 # Fetch reflections (used by Fetch API)
@@ -152,9 +151,5 @@ def api_add_reflection():
 
 
 
-
-# ------------------------------------
-#   RUN APP
-# ------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
