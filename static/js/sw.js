@@ -1,6 +1,3 @@
-// --------------------------
-// PWA SERVICE WORKER (FIXED)
-// --------------------------
 
 const CACHE_NAME = "journal-cache-v3";
 
