@@ -16,6 +16,7 @@ GAME_DATA_FILE = os.path.join("backend", "data.json")
 # ------------------------------------
 def safe_load_json(path, default):
     if not os.path.exists(path):
+        safe_save_json(path, default)
         return default
     try:
         with open(path, "r", encoding="utf-8") as f:
