@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/static/sw.js')
-      .then(reg => console.log('SW registered:', reg.scope))
-      .catch(err => console.log('SW registration failed:', err));
-  });
-}
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/static/sw.js')
+        .then(reg => console.log('SW registered:', reg.scope))
+        .catch(err => console.log('SW registration failed:', err));
+    });
+  }
 
 
 
@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
           </a>
         </li>
 
-
       </ul>
       <div class="burger">
         <span></span><span></span><span></span>
@@ -36,41 +35,39 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
 
   const burger = document.querySelector(".burger");
-const navLinks = document.querySelector(".nav-links");
-const navItems = document.querySelectorAll(".nav-links a");
+  const navLinks = document.querySelector(".nav-links");
+  const navItems = document.querySelectorAll(".nav-links a");
 
-// Toggle menu
-burger.addEventListener("click", (e) => {
-  e.stopPropagation();
-  navLinks.classList.toggle("nav-active");
-});
+  // Toggle menu
+  burger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle("nav-active");
+  });
 
-// Prevent close when clicking inside menu
-navLinks.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
+  // Prevent close when clicking inside menu
+  navLinks.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
 
-// ✅ Auto-close AFTER clicking a nav link
-navItems.forEach(link => {
-  link.addEventListener("click", () => {
+  // ✅ Auto-close AFTER clicking a nav link
+  navItems.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("nav-active");
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", () => {
     navLinks.classList.remove("nav-active");
   });
-});
 
-// Close when clicking outside
-document.addEventListener("click", () => {
-  navLinks.classList.remove("nav-active");
-});
-
-document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
-  const carousel = wrapper.querySelector(".carousel");
-  wrapper.querySelector(".left").onclick = () =>
-    carousel.scrollBy({ left: -300, behavior: "smooth" });
-  wrapper.querySelector(".right").onclick = () =>
-    carousel.scrollBy({ left: 300, behavior: "smooth" });
-});
-
-
+  document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
+    const carousel = wrapper.querySelector(".carousel");
+    wrapper.querySelector(".left").onclick = () =>
+      carousel.scrollBy({ left: -300, behavior: "smooth" });
+    wrapper.querySelector(".right").onclick = () =>
+      carousel.scrollBy({ left: 300, behavior: "smooth" });
+  });
 
 
   /* FOOTER */
@@ -86,29 +83,29 @@ document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
   setInterval(() => {
     const now = new Date();
     document.getElementById("live-clock").textContent =
-      now.toLocaleDateString("en-GB", { day:"2-digit", month:"short", year:"numeric" }) +
+      now.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }) +
       " • " +
       now.toLocaleTimeString("en-GB");
   }, 1000);
 
   /* LOCATION */
- navigator.geolocation?.getCurrentPosition(pos => {
-  fetch(`/api/location?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`)
-    .then(r => r.json())
-    .then(d => {
-      document.getElementById("location-text").textContent =
-        `📍 ${d.address.city || d.address.town || ""}, ${d.address.country || ""}`;
-    }).catch(err => {
-      console.log("Location fetch error:", err);
-    });
-});
+  navigator.geolocation?.getCurrentPosition(pos => {
+    fetch(`/api/location?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`)
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById("location-text").textContent =
+          `📍 ${d.address.city || d.address.town || ""}, ${d.address.country || ""}`;
+      }).catch(err => {
+        console.log("Location fetch error:", err);
+      });
+  });
 
   /* LOAD JOURNAL */
   fetch("/api/journal")
     .then(r => r.json())
     .then(d => {
       const c = document.getElementById("journal-cards");
-       if (!c) return;
+      if (!c) return;
       d.weeks.forEach(w => {
         c.innerHTML += `
           <div class="card">
@@ -124,7 +121,7 @@ document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
     .then(r => r.json())
     .then(d => {
       const c = document.getElementById("reflection-cards");
-       if (!c) return;
+      if (!c) return;
       d.forEach(r => {
         c.innerHTML += `
           <div class="card">
@@ -134,43 +131,43 @@ document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
       });
     });
 
-const themeToggle = document.getElementById("theme-toggle");
+  const themeToggle = document.getElementById("theme-toggle");
 
-// Check saved preference
-const savedTheme = localStorage.getItem("theme");
-if(savedTheme) {
-  document.body.classList.add(savedTheme);
-  updateToggleText(savedTheme);
-} else {
-  document.body.classList.add("dark-theme"); // default
-}
-
-// Toggle on click
-themeToggle.addEventListener("click", () => {
-  if (document.body.classList.contains("dark-theme")) {
-    document.body.classList.remove("dark-theme");
-    document.body.classList.add("light-theme");
-    localStorage.setItem("theme", "light-theme");
-    updateToggleText("light-theme");
+  // Check saved preference
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    document.body.classList.add(savedTheme);
+    updateToggleText(savedTheme);
   } else {
-    document.body.classList.remove("light-theme");
-    document.body.classList.add("dark-theme");
-    localStorage.setItem("theme", "dark-theme");
-    updateToggleText("dark-theme");
+    document.body.classList.add("dark-theme"); // default
   }
-});
 
-// Update button icon and text
-function updateToggleText(theme) {
-  const icon = themeToggle.querySelector("i");
-  if(theme === "dark-theme") {
-    icon.className = "fa fa-moon";
-    themeToggle.innerHTML = `<i class="fa fa-moon"></i> Dark Mode`;
-  } else {
-    icon.className = "fa fa-sun";
-    themeToggle.innerHTML = `<i class="fa fa-sun"></i> Light Mode`;
+  // Toggle on click
+  themeToggle.addEventListener("click", () => {
+    if (document.body.classList.contains("dark-theme")) {
+      document.body.classList.remove("dark-theme");
+      document.body.classList.add("light-theme");
+      localStorage.setItem("theme", "light-theme");
+      updateToggleText("light-theme");
+    } else {
+      document.body.classList.remove("light-theme");
+      document.body.classList.add("dark-theme");
+      localStorage.setItem("theme", "dark-theme");
+      updateToggleText("dark-theme");
+    }
+  });
+
+  // Update button icon and text
+  function updateToggleText(theme) {
+    const icon = themeToggle.querySelector("i");
+    if (theme === "dark-theme") {
+      icon.className = "fa fa-moon";
+      themeToggle.innerHTML = `<i class="fa fa-moon"></i> Dark Mode`;
+    } else {
+      icon.className = "fa fa-sun";
+      themeToggle.innerHTML = `<i class="fa fa-sun"></i> Light Mode`;
+    }
   }
-}
 
 
 });

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-document.getElementById("main-header-about").innerHTML = `
+  document.getElementById("main-header-about").innerHTML = `
     <nav class="glass-nav">
       <ul class="nav-links">
         <li><a href="/"><i class="fa fa-house"></i><span>Home</span></a></li>
@@ -22,57 +22,55 @@ document.getElementById("main-header-about").innerHTML = `
   `;
 
 
+  let aboutData = null;
 
+  fetch("/api/about")
+    .then(res => res.json())
+    .then(data => {
+      aboutData = data;
 
-let aboutData = null;
+      // Basic Info
+      document.getElementById("about-name").textContent = data.name;
+      document.getElementById("about-title").textContent = data.title;
+      document.getElementById("about-summary").textContent = data.summary;
+      document.getElementById("about-location").textContent = data.personal.location;
+      document.getElementById("about-email").textContent = data.personal.email;
 
-fetch("/api/about")
-  .then(res => res.json())
-  .then(data => {
-    aboutData = data;
+      // Skills
+      const skillsDiv = document.getElementById("skills");
+      data.skills.forEach(skill => {
+        skillsDiv.innerHTML += `<div class="skill-group"><li>${skill}</li></div>`;
+      });
 
-    // Basic Info
-    document.getElementById("about-name").textContent = data.name;
-    document.getElementById("about-title").textContent = data.title;
-    document.getElementById("about-summary").textContent = data.summary;
-    document.getElementById("about-location").textContent = data.personal.location;
-    document.getElementById("about-email").textContent = data.personal.email;
-
-    // Skills
-    const skillsDiv = document.getElementById("skills");
-    data.skills.forEach(skill => {
-      skillsDiv.innerHTML += `<div class="skill-group"><li>${skill}</li></div>`;
-    });
-
-    // Experience
-    const expDiv = document.getElementById("experience");
-    data.experience.forEach(exp => {
-      expDiv.innerHTML += `
+      // Experience
+      const expDiv = document.getElementById("experience");
+      data.experience.forEach(exp => {
+        expDiv.innerHTML += `
         <div class="card">
           <h3>${exp.role}</h3>
           <strong>${exp.company}</strong>
           <p>${exp.details}</p>
         </div>`;
-    });
+      });
 
-    // Education
-    const eduDiv = document.getElementById("education");
-    data.education.forEach(edu => {
-      eduDiv.innerHTML += `
+      // Education
+      const eduDiv = document.getElementById("education");
+      data.education.forEach(edu => {
+        eduDiv.innerHTML += `
         <div class="card">
           <h3>${edu.course}</h3>
           <strong>${edu.institution}</strong>
           <small>${edu.year}</small>
         </div>`;
-    });
+      });
 
-    // CV Download
-    document.getElementById("download-cv").addEventListener("click", e => {
-      e.preventDefault();
-      if (!aboutData) return;
+      // CV Download
+      document.getElementById("download-cv").addEventListener("click", e => {
+        e.preventDefault();
+        if (!aboutData) return;
 
-      const win = window.open("", "_blank");
-      win.document.write(`
+        const win = window.open("", "_blank");
+        win.document.write(`
         <html>
         <head>
           <title>${aboutData.name} - CV</title>
@@ -96,7 +94,7 @@ fetch("/api/about")
 
           <h2>Education</h2>
           ${aboutData.education.map(e =>
-            `<p>${e.course} — ${e.institution} (${e.year})</p>`).join("")}
+          `<p>${e.course} — ${e.institution} (${e.year})</p>`).join("")}
 
           <h2>Experience</h2>
           ${aboutData.experience.map(e =>
@@ -104,54 +102,78 @@ fetch("/api/about")
         </body>
         </html>
       `);
-      win.document.close();
-      win.print();
+        win.document.close();
+        win.print();
+      });
+    });
+
+
+
+  const burger = document.querySelector(".burger");
+  const navLinks = document.querySelector(".nav-links");
+  const navItems = document.querySelectorAll(".nav-links a");
+
+  // Toggle menu
+  burger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle("nav-active");
+  });
+
+  // Prevent close when clicking inside menu
+  navLinks.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  // ✅ Auto-close AFTER clicking a nav link
+  navItems.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("nav-active");
     });
   });
 
-
-
-
-
-  
-const themeToggle = document.getElementById("theme-toggle");
-
-// Check saved preference
-const savedTheme = localStorage.getItem("theme");
-if(savedTheme) {
-  document.body.classList.add(savedTheme);
-  updateToggleText(savedTheme);
-} else {
-  document.body.classList.add("dark-theme"); // default
-}
-
-// Toggle on click
-themeToggle.addEventListener("click", () => {
-  if (document.body.classList.contains("dark-theme")) {
-    document.body.classList.remove("dark-theme");
-    document.body.classList.add("light-theme");
-    localStorage.setItem("theme", "light-theme");
-    updateToggleText("light-theme");
-  } else {
-    document.body.classList.remove("light-theme");
-    document.body.classList.add("dark-theme");
-    localStorage.setItem("theme", "dark-theme");
-    updateToggleText("dark-theme");
-  }
-});
-
-// Update button icon and text
-function updateToggleText(theme) {
-  const icon = themeToggle.querySelector("i");
-  if(theme === "dark-theme") {
-    icon.className = "fa fa-moon";
-    themeToggle.innerHTML = `<i class="fa fa-moon"></i> Dark Mode`;
-  } else {
-    icon.className = "fa fa-sun";
-    themeToggle.innerHTML = `<i class="fa fa-sun"></i> Light Mode`;
-  }
-}
-
-
-
+  // Close when clicking outside
+  document.addEventListener("click", () => {
+    navLinks.classList.remove("nav-active");
   });
+
+
+
+  const themeToggle = document.getElementById("theme-toggle");
+
+  // Check saved preference
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    document.body.classList.add(savedTheme);
+    updateToggleText(savedTheme);
+  } else {
+    document.body.classList.add("dark-theme"); // default
+  }
+
+  // Toggle on click
+  themeToggle.addEventListener("click", () => {
+    if (document.body.classList.contains("dark-theme")) {
+      document.body.classList.remove("dark-theme");
+      document.body.classList.add("light-theme");
+      localStorage.setItem("theme", "light-theme");
+      updateToggleText("light-theme");
+    } else {
+      document.body.classList.remove("light-theme");
+      document.body.classList.add("dark-theme");
+      localStorage.setItem("theme", "dark-theme");
+      updateToggleText("dark-theme");
+    }
+  });
+
+  // Update button icon and text
+  function updateToggleText(theme) {
+    const icon = themeToggle.querySelector("i");
+    if (theme === "dark-theme") {
+      icon.className = "fa fa-moon";
+      themeToggle.innerHTML = `<i class="fa fa-moon"></i> Dark Mode`;
+    } else {
+      icon.className = "fa fa-sun";
+      themeToggle.innerHTML = `<i class="fa fa-sun"></i> Light Mode`;
+    }
+  }
+
+});
