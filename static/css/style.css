@@ -223,6 +223,10 @@ body {
   width: fit-content;
 }
 
+.card a{
+  text-decoration:  none;
+  color: var(--text);
+}
 /* =========================
    ABOUT PAGE
 ========================= */
@@ -446,6 +450,14 @@ footer {
   min-width: 260px;
   scroll-snap-align: start;
   flex-shrink: 0;
+}
+
+.carousel .card img {
+  width: 80px;    /* make image fit card width */
+  height: auto;      /* maintain aspect ratio */
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+  object-fit: cover; /* crop if needed without distortion */
 }
 
 /* Desktop improvement */

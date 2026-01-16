@@ -1,12 +1,12 @@
 {
-  "name": "Harka",
+  "name": "Harka Adhikari",
   "title": "Web Developer & Learner",
   "summary": "A passionate learner focused on modern web technologies, UI design, and meaningful digital products. I enjoy creating clean, modern, and interactive web applications while continuously learning and reflecting on my growth.",
 
   "personal": {
-    "email": "harka@email.com",
+    "email": "sabinadhikari798@gmail.com",
     "location": "United Kingdom",
-    "website": "https://your-site.com"
+    "website": "https://harka101.pythonanywhere.com/"
   },
 
   "skills": [
@@ -36,14 +36,9 @@
 
   "education": [
     {
-      "course": "BSc Computing",
-      "institution": "University Name",
-      "year": "2022 – Present"
-    },
-    {
-      "course": "High School Diploma",
-      "institution": "School Name",
-      "year": "2018 – 2022"
+      "course": "Computer Science",
+      "institution": "University for the Creative Arts, Farnham",
+      "year": "2025 – Present"
     }
   ],
 

@@ -96,6 +96,7 @@ document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
     .then(r => r.json())
     .then(d => {
       const c = document.getElementById("journal-cards");
+       if (!c) return;
       d.weeks.forEach(w => {
         c.innerHTML += `
           <div class="card">
@@ -111,6 +112,7 @@ document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
     .then(r => r.json())
     .then(d => {
       const c = document.getElementById("reflection-cards");
+       if (!c) return;
       d.forEach(r => {
         c.innerHTML += `
           <div class="card">

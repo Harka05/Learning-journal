@@ -16,6 +16,18 @@ def save_json(file, data):
     path = os.path.join(BASE, file)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
+        
+SNAKE_FILE = os.path.join(BASE, "snake.json")
+
+def load_snake_data():
+    if not os.path.exists(SNAKE_FILE):
+        return {"highScore": 0, "games": []}
+    with open(SNAKE_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_snake_data(data):
+    with open(SNAKE_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
 
 @app.route("/")
 def index():
@@ -42,20 +54,25 @@ def reflections_api():
 @app.route("/snake")
 def snake():
     return render_template("snake.html")
-
 @app.route("/api/snake", methods=["GET", "POST"])
 def snake_api():
-    data = load_json("snake.json", {"highScore": 0, "games": []})
+    data = load_snake_data()
 
     if request.method == "POST":
-        game = request.json
-        data["games"].insert(0, game)
+        body = request.json
+        score = body.get("score", 0)
+        note = body.get("note", "")
+        date = body.get("date")
 
-        if game["score"] > data["highScore"]:
-            data["highScore"] = game["score"]
+        # Update games history
+        data["games"].append({"score": score, "note": note, "date": date})
 
-        save_json("snake.json", data)
-        return jsonify({"status": "saved"})
+        # Update high score
+        if score > data.get("highScore", 0):
+            data["highScore"] = score
+
+        save_snake_data(data)
+        return jsonify({"status": "success"})
 
     return jsonify(data)
 

@@ -3,12 +3,37 @@
     {
       "text": "Designing this journal helped me understand how frontend and backend connect cleanly.",
       "name": "Harka",
-      "date": "2025-01-02 18:40:21"
+      "date": "2025-11-02 18:40:21"
     },
     {
       "text": "Glass UI feels modern and calm. Performance matters as much as visuals.",
       "name": "Harka",
-      "date": "2025-01-06 21:15:44"
+      "date": "2025-11-06 21:15:44"
+    },
+    {
+      "text": "Implementing the theme toggle taught me the importance of user preferences and persistence.",
+      "name": "Harka",
+      "date": "2025-12-01 19:22:33"
+    },
+    {
+      "text": "Mobile-first design challenged me to think about responsive layouts and touch interactions.",
+      "name": "Harka",
+      "date": "2025-12-10 14:05:10"
+    },
+    {
+      "text": "Adding animations made me realize subtle movements improve the overall UX without overwhelming users.",
+      "name": "Harka",
+      "date": "2025-12-25 17:44:02"
+    },
+    {
+      "text": "Saving and fetching JSON data from the backend strengthened my understanding of state management.",
+      "name": "Harka",
+      "date": "2025-12-28 20:30:55"
+    },
+    {
+      "text": "Testing the Snake game across devices highlighted the importance of flexible controls and accessibility.",
+      "name": "Harka",
+      "date": "2026-01-05 22:11:49"
     }
   ]
 }

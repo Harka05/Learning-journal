@@ -1,36 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Zen Snake</title>
+  <!-- Main site CSS -->
+  <link rel="stylesheet" href="/static/css/style.css">
   <link rel="stylesheet" href="/static/css/snake.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
 
-<section class="snake-wrapper">
-  <h1>Zen Snake</h1>
+  <!-- Navbar -->
+  <header id="main-header"></header>
 
-  <canvas id="game" width="300" height="300"></canvas>
+  <!-- Main Section -->
+  <main class="section">
+    <section class="section snake-wrapper">
 
-  <div class="stats">
-    <span>Score: <b id="score">0</b></span>
-    <span>High: <b id="highScore">0</b></span>
-  </div>
+      <div class="snake-game-wrapper">
+        <div class="snake-game">
+          <h2>Zen Snake</h2>
 
-  <textarea id="note" placeholder="Reflection / note (optional)"></textarea>
-  <button id="save">Save & Restart</button>
+          <button id="startGame" class="btn primary">
+            <i class="fa fa-play"></i> Start Game
+          </button>
 
-  <!-- Mobile controls -->
-  <div class="controls">
-    <button data-dir="up">▲</button>
-    <div>
-      <button data-dir="left">◀</button>
-      <button data-dir="down">▼</button>
-      <button data-dir="right">▶</button>
+          <canvas id="game" width="320" height="320"></canvas>
+
+          <p class="score-text">
+            Score: <span id="score">0</span> · High: <span id="highScore">0</span>
+          </p>
+          <textarea id="note" placeholder="Add a note for this game..."></textarea>
+          <button id="save" class="btn primary" disabled>
+            <i class="fa fa-floppy-disk"></i> Save Score
+          </button>
+        </div>
+
+        <div class="snake-history">
+          <h3>Past Scores</h3>
+          <ul id="score-list"></ul>
+        </div>
+
+    </section>
+
+
+  </main>
+
+  <div id="right-side">
+
+    <div class="controls">
+      <button data-dir="up" class="btn primary"><i class="fa fa-arrow-up"></i></button>
+      <button data-dir="left" class="btn primary"><i class="fa fa-arrow-left"></i></button>
+      <button data-dir="down" class="btn primary"><i class="fa fa-arrow-down"></i></button>
+      <button data-dir="right" class="btn primary"><i class="fa fa-arrow-right"></i></button>
     </div>
-  </div>
-</section>
 
-<script src="/static/js/snake.js"></script>
+  <footer id="main-footer"></footer>
+
+
+  </div>
+
+
+
+  </div>
+
+  <!-- Footer -->
+
+  <!-- Scripts -->
+  <script src="/static/js/main.js" defer></script>
+  <script src="/static/js/snake.js" defer></script>
+
 </body>
+
 </html>

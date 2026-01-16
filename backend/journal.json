@@ -14,6 +14,26 @@
       "week": "Week 3",
       "activity": "Modern UI, animations, and performance tuning",
       "notes": "Glassmorphism, IntersectionObserver, and mobile-first design."
+    },
+    {
+      "week": "Week 4",
+      "activity": "Implemented dynamic components and reusable templates",
+      "notes": "Focus on DRY principle and modular JS with fetch for API data."
+    },
+    {
+      "week": "Week 5",
+      "activity": "Integrated interactive features",
+      "notes": "Snake game, scroll animations, theme toggles, and responsive navbar."
+    },
+    {
+      "week": "Week 6",
+      "activity": "Testing and bug fixing",
+      "notes": "Debugged cross-browser issues, mobile layout tweaks, and JSON data persistence."
+    },
+    {
+      "week": "Week 7",
+      "activity": "Deployment and final polish",
+      "notes": "Optimized load speed, merged backgrounds seamlessly, and finalized UX/UI design."
     }
   ]
 }

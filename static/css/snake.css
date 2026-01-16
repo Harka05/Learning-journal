@@ -62,3 +62,136 @@ button {
   height: 44px;
   font-size: 1rem;
 }
+
+
+/* =========================
+   SNAKE LAYOUT
+========================= */
+.snake-wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.snake-game {
+  flex: 1 1 320px;
+  max-width: 400px;
+}
+
+.snake-history {
+  flex: 1 1 220px;
+  max-width: 300px;
+  background: var(--glass);
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.snake-history ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.snake-history li {
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+#note {
+  width: 100%;
+  margin-top: 0.8rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--text);
+  resize: vertical;
+  min-height: 40px;
+}
+
+/* Mobile stacking */
+@media (max-width: 768px) {
+  .snake-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .snake-history {
+    max-width: 100%;
+    width: 90%;
+    max-height: 250px;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.controls button {
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+/* Snake wrapper: desktop side by side */
+.snake-wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  justify-content: center;
+}
+
+/* Game + controls together */
+.snake-game-wrapper {
+  display: flex;
+  flex-direction: column; /* default stack for mobile */
+  gap: 1rem;
+}
+
+
+#right-side{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Controls hidden by default (desktop) */
+.controls {
+  display: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+/* 
+/* Mobile: show controls below game */
+@media (max-width: 767px) {
+  .controls {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .controls button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .snake-wrapper {
+    flex-direction: column;
+  }
+}
+
+
