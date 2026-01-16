@@ -4,7 +4,9 @@ import json, os
 
 app = Flask(__name__)
 
-BASE = "backend"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE = os.path.join(BASE_DIR, "backend")
+
 
 def load_json(file, default):
     path = os.path.join(BASE, file)
