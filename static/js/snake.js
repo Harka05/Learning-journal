@@ -1,103 +1,109 @@
-const canvas = document.getElementById("gameCanvas");
+const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-const gridSize = 20;
-const canvasSize = 400;
-
-let snake = [{ x: 160, y: 160 }];
-let dx = gridSize;
-let dy = 0;
-let foodX, foodY;
+let snake = [{x: 150, y: 150}];
+let food = {x: 60, y: 60};
+let dx = 10, dy = 0;
 let score = 0;
+let game;
 
-const reflections = ["Peace", "Focus", "Calm", "Balance", "Strength"];
+const scoreEl = document.getElementById("score");
+const highScoreEl = document.getElementById("highScore");
+const noteEl = document.getElementById("note");
 
-function randomGrid() {
-    return Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize;
+/* FETCH HIGH SCORE */
+fetch("/api/snake")
+  .then(r => r.json())
+  .then(d => highScoreEl.textContent = d.highScore);
+
+function draw() {
+  ctx.clearRect(0,0,300,300);
+
+  ctx.fillStyle = "#4ade80";
+  snake.forEach(p => ctx.fillRect(p.x, p.y, 10, 10));
+
+  ctx.fillStyle = "#f87171";
+  ctx.fillRect(food.x, food.y, 10, 10);
 }
 
-function placeFood() {
-    foodX = randomGrid();
-    foodY = randomGrid();
+function move() {
+  const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+
+  if (hitWall(head) || hitSelf(head)) {
+    endGame();
+    return;
+  }
+
+  snake.unshift(head);
+
+  if (head.x === food.x && head.y === food.y) {
+    score++;
+    scoreEl.textContent = score;
+    food = randomFood();
+  } else {
+    snake.pop();
+  }
+
+  draw();
 }
 
-function drawSnake() {
-    snake.forEach(part => {
-        ctx.fillStyle = "#5f37ff";
-        ctx.fillRect(part.x, part.y, gridSize, gridSize);
-    });
+function randomFood() {
+  return {
+    x: Math.floor(Math.random()*30)*10,
+    y: Math.floor(Math.random()*30)*10
+  };
 }
 
-function drawFood() {
-    ctx.fillStyle = "#2e026d";
-    ctx.fillRect(foodX, foodY, gridSize, gridSize);
+function hitWall(h) {
+  return h.x < 0 || h.y < 0 || h.x >= 300 || h.y >= 300;
 }
 
-function moveSnake() {
-    const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-
-    // Edge wrapping
-    if (head.x < 0) head.x = canvasSize - gridSize;
-    if (head.x >= canvasSize) head.x = 0;
-    if (head.y < 0) head.y = canvasSize - gridSize;
-    if (head.y >= canvasSize) head.y = 0;
-
-    snake.unshift(head);
-
-    if (head.x === foodX && head.y === foodY) {
-        score++;
-        document.getElementById("score").textContent = score;
-        document.getElementById("reflection").textContent =
-            reflections[Math.floor(Math.random() * reflections.length)];
-
-        if (score % 3 === 0) fetchQuote();
-        placeFood();
-    } else {
-        snake.pop();
-    }
+function hitSelf(h) {
+  return snake.some(p => p.x === h.x && p.y === h.y);
 }
 
-function drawGame() {
-    ctx.fillStyle = "#f9f9ff"; // background matches theme
-    ctx.fillRect(0, 0, canvasSize, canvasSize);
+function endGame() {
+  clearInterval(game);
 
-    drawFood();
-    drawSnake();
-    moveSnake();
+  fetch("/api/snake", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      score,
+      note: noteEl.value,
+      date: new Date().toLocaleString()
+    })
+  });
+
+  setTimeout(start, 300);
+}
+
+function start() {
+  snake = [{x: 150, y: 150}];
+  dx = 10; dy = 0;
+  score = 0;
+  scoreEl.textContent = 0;
+  noteEl.value = "";
+  food = randomFood();
+  game = setInterval(move, 100);
 }
 
 document.addEventListener("keydown", e => {
-    if (e.key === "ArrowUp" && dy === 0) { dx = 0; dy = -gridSize; }
-    if (e.key === "ArrowDown" && dy === 0) { dx = 0; dy = gridSize; }
-    if (e.key === "ArrowLeft" && dx === 0) { dx = -gridSize; dy = 0; }
-    if (e.key === "ArrowRight" && dx === 0) { dx = gridSize; dy = 0; }
+  if (e.key === "ArrowUp") [dx,dy] = [0,-10];
+  if (e.key === "ArrowDown") [dx,dy] = [0,10];
+  if (e.key === "ArrowLeft") [dx,dy] = [-10,0];
+  if (e.key === "ArrowRight") [dx,dy] = [10,0];
 });
 
-function fetchQuote() {
-    fetch("https://zenquotes.io/api/random")
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById("quote").textContent =
-                `"${data[0].q}" - ${data[0].a}`;
-        });
-}
+/* MOBILE CONTROLS */
+document.querySelectorAll(".controls button").forEach(btn => {
+  btn.onclick = () => {
+    const d = btn.dataset.dir;
+    if (d==="up") [dx,dy]=[0,-10];
+    if (d==="down") [dx,dy]=[0,10];
+    if (d==="left") [dx,dy]=[-10,0];
+    if (d==="right") [dx,dy]=[10,0];
+  };
+});
 
-document.getElementById("saveBtn").onclick = () => {
-    fetch("/save", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ score })
-    });
-};
-
-document.getElementById("favoriteBtn").onclick = () => {
-    const text = document.getElementById("quote").textContent;
-    fetch("/favorite", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ quote: text })
-    });
-};
-
-placeFood();
-setInterval(drawGame, 150);
+start();

@@ -1,33 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zen Snake – Home</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-<meta name="theme-color" content="#0d6efd">
+{% extends "base.html" %}
+{% block title %}Harka | Home{% endblock %}
 
-</head>
-<body>
+{% block content %}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Welcome to Harka's Learning Journal</h1>
+    <p>Documenting projects, reflections, and weekly learning in a modern style.</p>
+    <a href="/journal" class="btn-primary">View Journal</a>
+    <a href="/projects" class="btn-secondary">Projects</a>
+  </div>
+  <div class="hero-image">
+    <img src="{{ url_for('static', filename='images/myphoto.JPG') }}" alt="Harka" />
+  </div>
+</section>
 
-<header>
-  <h1>Welcome to ZenSnake</h1>
-</header>
-
-<main>
-  <section class="game-section">
-    <div class="buttons">
-      <a href="/zensnake"><button>Play ZenSnake</button></a>
-      <a href="/reflection"><button>Write Reflection</button></a>
-      <a href="/reflections"><button>View Reflections</button></a>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p>&copy; 2025 Zen Snake</p>
-</footer>
-
-</body>
-</html>
+<section class="quick-links">
+  <div class="card">
+    <h3>Journal</h3>
+    <p>Track weekly activities and reflections.</p>
+    <a href="/journal" class="btn-link">Go to Journal →</a>
+  </div>
+  <div class="card">
+    <h3>Projects</h3>
+    <p>Explore projects developed during learning.</p>
+    <a href="/projects" class="btn-link">View Projects →</a>
+  </div>
+  <div class="card">
+    <h3>Zen Snake</h3>
+    <p>Play the Zen Snake game online, mobile-ready.</p>
+    <a href="/zensnake" class="btn-link">Play Game →</a>
+  </div>
+</section>
+{% endblock %}

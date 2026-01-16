@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at bottom, var(--bg-gradient2), transparent 60%),
+    linear-gradient(180deg, var(--bg-color1), var(--bg-color2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.snake-wrapper {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  padding: 1.5rem;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,.3);
+}
+
+canvas {
+  background: rgba(0,0,0,.25);
+  border-radius: 14px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: .85rem;
+  margin: .6rem 0;
+}
+
+textarea {
+  width: 100%;
+  height: 60px;
+  border-radius: 12px;
+  padding: .5rem;
+  background: var(--glass);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  resize: none;
+}
+
+button {
+  margin-top: .6rem;
+  padding: .5rem 1.2rem;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.controls {
+  margin-top: 1rem;
+}
+
+.controls button {
+  width: 44px;
+  height: 44px;
+  font-size: 1rem;
+}

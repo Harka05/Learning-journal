@@ -2,60 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harka | About</title>
+  <title>About Harka</title>
+
   <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-<meta name="theme-color" content="#0d6efd">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
-  <header id="main-header"></header>
+
+<header id="main-header-about"></header>
 
 
-  <main>
-    <section class="about modern-about">
-      <div class="about-container">
-        <div class="about-image">
-          <img src="/static/images/myphotopng.png" alt="Profile Photo">
-        </div>
-        <div class="about-text">
-          <h2>About Me</h2>
-          <p>
-            Hi, I’m Harka Adhikari, a creative developer exploring how artificial intelligence can enhance human creativity and emotion.
-          </p>
-          <p>
-            Through <strong>Harka</strong>, I merge technology, art, and storytelling to create meaningful digital experiences. 
-            This Learning Journal documents my journey, weekly reflections, and showcases my creative projects.
-          </p>
-          <p>
-            I enjoy collaborating on projects like <em>Blood in Need</em> and Real-Time Translator, focusing on responsive design, usability, and modern UI/UX.
-          </p>
-        </div>
-      </div>
-    </section>
+<section class="section glass about">
+  <h1 id="about-name"></h1>
+  <h3 id="about-title"></h3>
+  <p id="about-summary"></p>
 
-    <section id="motivationVideo"></section>
+  <div class="about-info">
+    <p><i class="fa fa-location-dot"></i> <span id="about-location"></span></p>
+    <p><i class="fa fa-envelope"></i> <span id="about-email"></span></p>
+  </div>
 
+  <h2><i class="fa fa-code"></i> Skills</h2>
+  <ul id="skills" class="skills-grid"></ul>
 
+  <h2><i class="fa fa-briefcase"></i> Experience</h2>
+  <div id="experience" class="cards"></div>
 
-  </main>
+  <h2><i class="fa fa-graduation-cap"></i> Education</h2>
+  <div id="education" class="cards"></div>
 
-  <footer id="main-footer">
-    
-  </footer>
+  
+<a id="download-cv" href="#" class="btn primary hero-btn">
+  <i class="fa fa-download"></i> Download CV
+</a>
 
-<script src="/static/js/thirdparty.js"></script>
-<script src="/static/js/script.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register("/static/js/sw.js")
-      .then(() => console.log("Service Worker registered"))
-      .catch(err => console.log("SW registration failed:", err));
-}
-</script>
+</section>
 
 
+
+<footer id="main-footer"></footer>
+
+<script src="/static/js/layout.js"></script>
+<script src="/static/js/about.js"></script>
+<script src="/static/js/main.js"></script>
 </body>
 </html>
-

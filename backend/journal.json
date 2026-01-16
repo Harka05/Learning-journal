@@ -1,0 +1,19 @@
+{
+  "weeks": [
+    {
+      "week": "Week 1",
+      "activity": "Project planning and idea brainstorming",
+      "notes": "Focused on creativity, glass UI inspiration, and SPA layout."
+    },
+    {
+      "week": "Week 2",
+      "activity": "Built Flask backend and JSON APIs",
+      "notes": "Learned clean routing, safe JSON handling, and separation of concerns."
+    },
+    {
+      "week": "Week 3",
+      "activity": "Modern UI, animations, and performance tuning",
+      "notes": "Glassmorphism, IntersectionObserver, and mobile-first design."
+    }
+  ]
+}
