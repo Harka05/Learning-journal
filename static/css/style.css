@@ -94,11 +94,11 @@ body {
 
 /* BURGER */
 .burger {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
-  z-index: 1001; /* 🔥 IMPORTANT */
+  z-index: 1001; 
 }
 
 
@@ -368,6 +368,15 @@ footer {
 ========================= */
 @media (max-width: 768px){
   .burger { display: flex; }
+
+
+.burger span {
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  z-index: 9999;
+}
+
   .glass-nav {
     justify-content: space-between;
     position: fixed;
