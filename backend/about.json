@@ -1,0 +1,57 @@
+{
+  "name": "Harka Adhikari",
+  "title": "Web Developer & Learner",
+  "summary": "A passionate learner focused on modern web technologies, UI design, and meaningful digital products. I enjoy creating clean, modern, and interactive web applications while continuously learning and reflecting on my growth.",
+
+  "personal": {
+    "email": "sabinadhikari798@gmail.com",
+    "location": "United Kingdom",
+    "website": "https://harka101.pythonanywhere.com/"
+  },
+
+  "skills": [
+    "HTML5, CSS3, JavaScript (ES6+)",
+    "ASP.NET",
+    "Python (Flask)",
+    "REST APIs",
+    "Responsive Design",
+    "UI/UX Design & Glassmorphism",
+    "Accessibility (WCAG basics)",
+    "Git & GitHub",
+    "Figma (basic)"
+  ],
+
+  "experience": [
+    {
+      "role": "Web Developer",
+      "company": "Personal Projects",
+      "details": "Developed learning journal, portfolio websites, and interactive UI projects. Focused on modern UI, clean code, and user-friendly designs."
+    },
+    {
+      "role": "Learning Journal Project",
+      "company": "Personal Project",
+      "details": "Designed and developed a glassmorphic single-page learning journal using Flask and JSON. Implemented dynamic UI components with JavaScript and modern CSS."
+    }
+  ],
+
+  "education": [
+    {
+      "course": "Computer Science",
+      "institution": "University for the Creative Arts, Farnham",
+      "year": "2025 – Present"
+    }
+  ],
+
+  "interests": [
+    "Modern Web Design",
+    "Creative Coding",
+    "Personal Reflection Writing",
+    "UI/UX Exploration",
+    "Learning New Technologies"
+  ],
+
+  "cv": {
+    "file_name": "Harka_CV.pdf",
+    "last_updated": "2025-12-11"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "highScore": 21,
+  "games": [
+    {
+      "score": 12,
+      "note": "This is Highest till Now.",
+      "date": "1/16/2026, 11:43:05 AM"
+    },
+    {
+      "score": 0,
+      "note": "This is test 0.",
+      "date": "1/16/2026, 11:43:05 AM"
+    },
+    {
+      "score": 21,
+      "note": "This is done by Sabin.",
+      "date": "1/16/2026, 1:38:10 PM"
+    }
+  ]
+}
