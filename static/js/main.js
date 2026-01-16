@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/static/sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+
+
+
   /* NAVBAR */
   document.getElementById("main-header").innerHTML = `
     <nav class="glass-nav">
@@ -82,14 +92,16 @@ document.querySelectorAll(".carousel-wrapper").forEach(wrapper => {
   }, 1000);
 
   /* LOCATION */
-  navigator.geolocation?.getCurrentPosition(pos => {
-    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`)
-      .then(r => r.json())
-      .then(d => {
-        document.getElementById("location-text").textContent =
-          `📍 ${d.address.city || d.address.town || ""}, ${d.address.country || ""}`;
-      });
-  });
+ navigator.geolocation?.getCurrentPosition(pos => {
+  fetch(`/api/location?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`)
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById("location-text").textContent =
+        `📍 ${d.address.city || d.address.town || ""}, ${d.address.country || ""}`;
+    }).catch(err => {
+      console.log("Location fetch error:", err);
+    });
+});
 
   /* LOAD JOURNAL */
   fetch("/api/journal")

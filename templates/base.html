@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Harka | Learning Journal{% endblock %}</title>
 
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<script src="{{ url_for('static', filename='sw.js') }}"></script>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 

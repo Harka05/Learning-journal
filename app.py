@@ -1,3 +1,4 @@
+import requests
 from flask import Flask, render_template, jsonify, request
 import json, os
 
@@ -16,7 +17,7 @@ def save_json(file, data):
     path = os.path.join(BASE, file)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
-        
+
 SNAKE_FILE = os.path.join(BASE, "snake.json")
 
 def load_snake_data():
@@ -76,6 +77,14 @@ def snake_api():
 
     return jsonify(data)
 
+
+@app.route("/api/location")
+def location_proxy():
+    lat = request.args.get("lat")
+    lon = request.args.get("lon")
+    url = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lon}"
+    r = requests.get(url, headers={"User-Agent": "HarkaApp/1.0"})
+    return jsonify(r.json())
 
 if __name__ == "__main__":
     app.run(debug=True)
