@@ -3,37 +3,44 @@
     {
       "week": "Week 1",
       "activity": "Project planning and idea brainstorming",
-      "notes": "Focused on creativity, glass UI inspiration, and SPA layout."
+      "notes": "Focused on creativity, glass UI inspiration, and SPA layout.",
+      "details": "In Week 1, I spent time planning the project and brainstorming ideas. I explored modern web design trends, particularly glassmorphism, to inspire the UI. I also outlined the single-page application structure to ensure a smooth user experience. This week helped me think critically about project scope and initial workflow. Reflection on my planning approach highlighted areas where I can improve clarity and documentation."
     },
     {
       "week": "Week 2",
       "activity": "Built Flask backend and JSON APIs",
-      "notes": "Learned clean routing, safe JSON handling, and separation of concerns."
+      "notes": "Learned clean routing, safe JSON handling, and separation of concerns.",
+      "details": "During Week 2, I implemented the Flask backend and set up JSON APIs for dynamic content. I learned how to manage routes efficiently and handle data securely. This phase strengthened my understanding of server-client separation and modular design. I also tested API responses to ensure reliability and correctness. Reflection showed me the importance of structured backend planning for maintainable code."
     },
     {
       "week": "Week 3",
       "activity": "Modern UI, animations, and performance tuning",
-      "notes": "Glassmorphism, IntersectionObserver, and mobile-first design."
+      "notes": "Glassmorphism, IntersectionObserver, and mobile-first design.",
+      "details": "Week 3 focused on improving the UI with modern design and animations. I implemented glassmorphism elements and smooth scroll animations using IntersectionObserver. Performance tuning was essential to keep the site fast across devices. I practiced responsive design to make the site mobile-first. Reflection highlighted the importance of balancing visual appeal with speed and usability."
     },
     {
       "week": "Week 4",
       "activity": "Implemented dynamic components and reusable templates",
-      "notes": "Focus on DRY principle and modular JS with fetch for API data."
+      "notes": "Focus on DRY principle and modular JS with fetch for API data.",
+      "details": "In Week 4, I created reusable templates for different sections of the site. I applied the DRY principle to avoid repetition and simplify maintenance. JavaScript fetch calls were used to dynamically populate data from JSON APIs. This made the site more modular and easier to update. Reflection emphasized the value of code reuse and structured component design."
     },
     {
       "week": "Week 5",
       "activity": "Integrated interactive features",
-      "notes": "Snake game, scroll animations, theme toggles, and responsive navbar."
+      "notes": "Snake game, scroll animations, theme toggles, and responsive navbar.",
+      "details": "Week 5 was about making the site interactive. I added the Snake game, theme toggle, scroll-based animations, and a responsive navbar. These features improved user engagement and tested my understanding of event handling in JS. I learned to ensure accessibility and touch compatibility for mobile devices. Reflection revealed how interactivity enhances both learning and user experience."
     },
     {
       "week": "Week 6",
       "activity": "Testing and bug fixing",
-      "notes": "Debugged cross-browser issues, mobile layout tweaks, and JSON data persistence."
+      "notes": "Debugged cross-browser issues, mobile layout tweaks, and JSON data persistence.",
+      "details": "Week 6 focused on testing the website thoroughly across browsers and devices. I fixed layout issues, optimized performance, and ensured persistent JSON data handling. Debugging taught me to anticipate potential user errors and edge cases. I reflected on the value of meticulous testing before deployment. This week reinforced my attention to detail and quality assurance skills."
     },
     {
       "week": "Week 7",
       "activity": "Deployment and final polish",
-      "notes": "Optimized load speed, merged backgrounds seamlessly, and finalized UX/UI design."
+      "notes": "Optimized load speed, merged backgrounds seamlessly, and finalized UX/UI design.",
+      "details": "In Week 7, I deployed the project and polished the UX/UI for a professional look. I optimized load times and ensured smooth background transitions. Final touches included mobile responsiveness, accessibility checks, and final content review. Reflection highlighted the importance of finishing strong and presenting a complete, coherent product. I also considered feedback for future improvements."
     }
   ]
 }

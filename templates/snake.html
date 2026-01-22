@@ -1,78 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Zen Snake</title>
-  <!-- Main site CSS -->
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="stylesheet" href="/static/css/snake.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<body>
-
-  <!-- Navbar -->
+<body class="light-theme">
   <header id="main-header"></header>
 
-  <!-- Main Section -->
-  <main class="section">
-    <section class="section snake-wrapper">
+  <div class="snake-wrapper">
 
-      <div class="snake-game-wrapper">
-        <div class="snake-game">
-          <h2>Zen Snake</h2>
+    <h2>Zen Snake</h2>
 
-          <button id="startGame" class="btn primary">
-            <i class="fa fa-play"></i> Start Game
-          </button>
+    <!-- Start Button -->
+    <button id="startGame" class="btn primary">
+      <i class="fa fa-play"></i> Start Game
+    </button>
 
-          <canvas id="game" width="320" height="320"></canvas>
-
-          <p class="score-text">
-            Score: <span id="score">0</span> · High: <span id="highScore">0</span>
-          </p>
-          <textarea id="note" placeholder="Add a note for this game..."></textarea>
-          <button id="save" class="btn primary" disabled>
-            <i class="fa fa-floppy-disk"></i> Save Score
-          </button>
-        </div>
-
-        <div class="snake-history">
-          <h3>Past Scores</h3>
-          <ul id="score-list"></ul>
-        </div>
-
-    </section>
-
-
-  </main>
-
-  <div id="right-side">
-
-    <div class="controls">
-      <button data-dir="up" class="btn primary"><i class="fa fa-arrow-up"></i></button>
-      <button data-dir="left" class="btn primary"><i class="fa fa-arrow-left"></i></button>
-      <button data-dir="down" class="btn primary"><i class="fa fa-arrow-down"></i></button>
-      <button data-dir="right" class="btn primary"><i class="fa fa-arrow-right"></i></button>
+    <!-- Gesture Info -->
+    <div class="gesture-info" style="margin: 0.5rem 0; font-size: 0.9rem; color: var(--text);">
+      Use swipe gestures on the canvas to move the snake (Up, Down, Left, Right)
     </div>
 
-  <footer id="main-footer"></footer>
+    <!-- Canvas -->
+    <canvas id="game" width="320" height="320"></canvas>
 
+    <!-- Score -->
+    <p class="score-text">
+      Score: <span id="score">0</span> · High: <span id="highScore">0</span>
+    </p>
+
+    <!-- Note -->
+    <textarea id="note" placeholder="Add a note for this game..."></textarea>
+
+    <!-- Save Button -->
+    <button id="save" class="btn primary" disabled>
+      <i class="fa fa-floppy-disk"></i> Save Score
+    </button>
+
+    <!-- History -->
+    <div class="snake-history">
+      <h3>Past Scores</h3>
+      <ul id="score-list"></ul>
+    </div>
 
   </div>
 
-
-
+  <div class="modal hidden" id="modal">
+  <div class="modal-content glass">
+    <button class="modal-close">&times;</button>
+    <div id="modal-body"></div>
   </div>
+</div>
 
-  <!-- Footer -->
 
-  <!-- Scripts -->
-  <script src="/static/js/main.js" defer></script>
-  <script src="/static/js/snake.js" defer></script>
+<footer id="main-footer" style="display: none;"></footer>
+
+
+  <script src="/static/js/snake.js"></script>
+  <script src="/static/js/main.js"></script>
 
 </body>
-
 </html>
