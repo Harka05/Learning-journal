@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Blood in Need",
+    "description": "A platform for connecting blood donors with hospitals in real-time.",
+    "details": "<p><strong>Blood in Need</strong> is a full-stack application designed to streamline the process of blood donation and hospital requests. Users can register as donors or hospitals, view real-time blood requests, and filter donors by blood type and location. The backend is built with <em>.NET MVC</em> and <em>SQL Server</em> for robust data management. Real-time notifications are handled using SignalR for instant updates. Key features include user authentication, request tracking, email alerts, and a responsive design optimized for mobile and desktop devices. The platform emphasizes accessibility, ease of use, and rapid response in emergency situations.</p><p>Security measures include encrypted passwords, role-based access, and input validation to prevent data breaches. The project was tested across multiple devices to ensure consistent performance and usability, making it a reliable tool for hospitals and donors alike.</p>",
+    "image": "/static/images/BloodinNeed.png",
+    "link": "/bloodinneed"
+  },
+  {
+    "title": "Zen Snake",
+    "description": "A mobile-friendly Snake game with score tracking and note saving.",
+    "details": "<p><strong>Zen Snake</strong> is a relaxing and interactive game built with HTML, CSS, and JavaScript. The game features smooth gameplay mechanics, touch-friendly controls for mobile devices, and adaptive design for different screen sizes. Players can track their scores across sessions and save custom notes for personal progress tracking or game strategies.</p><p>The game includes visual enhancements like dynamic color changes and animations to make gameplay enjoyable. Sound effects, responsive keyboard and swipe controls, and performance optimizations ensure a seamless experience. Code is modular and well-documented, making it easy to extend with new levels or challenges.</p><p>This project demonstrates best practices in front-end development, including DOM manipulation, event handling, local storage management, and ensuring a responsive and accessible gaming experience.</p>",
+    "image": "/static/images/snake.png",
+    "link": "/snake"
+  },
+  {
+    "title": "Learning Journal",
+    "description": "Tracks weekly activities, reflections, and growth in web development skills.",
+    "details": "<p><strong>Learning Journal</strong> is a digital diary for tracking learning progress, personal growth, and project development. Built with Flask for the backend and a combination of HTML, CSS, and Vanilla JavaScript for the front-end, the journal allows users to add weekly updates, detailed reflections, and notes on learning achievements.</p><p>Features include interactive cards, carousel views for past weeks, filtering by topics, and a modal view for expanded content. Users can also upload images, highlight milestones, and review progress over time. The platform uses a clean, modern UI with PWA support for offline access and mobile optimization.</p><p>The project emphasizes best practices in web development, including modular code, responsive design, accessibility considerations, and smooth user interactions. This tool serves both as a portfolio showcase and a personal learning management system.</p>",
+    "image": "/static/images/journal.png",
+    "link": "/journal"
+  }
+]

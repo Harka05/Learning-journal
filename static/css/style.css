@@ -542,4 +542,130 @@ footer {
     display: none;
   }
 }
+/* =========================
+   MODAL
+========================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  overflow-y: auto; /* allows scrolling on small screens */
+  padding: 1rem;    /* space from edges */
+}
 
+.modal.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh; /* never taller than screen */
+  overflow-y: auto;  /* scroll inside if content is too tall */
+  padding: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  transform: translateY(0);
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-sizing: border-box;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: var(--secondary-color);
+}
+
+/* Dark/Light Theme Auto-Adaptive */
+body.dark-theme .modal-content {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--text);
+}
+
+body.light-theme .modal-content {
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: var(--text);
+}
+
+/* Fade & Slide Animation */
+.modal.show {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .modal-close {
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+    line-height: 28px;
+  }
+
+  .modal img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Images inside modal */
+.modal img {
+  width: 10rem; /* will be overridden by responsive rules */
+}

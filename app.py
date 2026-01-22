@@ -79,6 +79,10 @@ def snake_api():
 
     return jsonify(data)
 
+@app.route("/api/projects")
+def projects_api():
+    return jsonify(load_json("projects.json", []))
+
 
 @app.route("/api/location")
 def location_proxy():

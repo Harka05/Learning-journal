@@ -3,37 +3,44 @@
     {
       "text": "Designing this journal helped me understand how frontend and backend connect cleanly.",
       "name": "Harka",
-      "date": "2025-11-02 18:40:21"
+      "date": "2025-11-02 18:40:21",
+      "details": "This project made me realize the importance of clear communication between frontend and backend. I reflected on how API design impacts UI rendering and data consistency. I also noted areas for optimization in data fetching and state management. Overall, this reflection deepened my full-stack understanding and development workflow."
     },
     {
       "text": "Glass UI feels modern and calm. Performance matters as much as visuals.",
       "name": "Harka",
-      "date": "2025-11-06 21:15:44"
+      "date": "2025-11-06 21:15:44",
+      "details": "While implementing glassmorphism, I reflected on balancing aesthetics and performance. Smooth animations improved the user experience without overloading resources. I also learned to use CSS variables and gradients effectively. This reflection reinforced the importance of clean, performant UI design. I now appreciate subtle design choices that enhance user engagement."
     },
     {
       "text": "Implementing the theme toggle taught me the importance of user preferences and persistence.",
       "name": "Harka",
-      "date": "2025-12-01 19:22:33"
+      "date": "2025-12-01 19:22:33",
+      "details": "Adding a theme toggle allowed me to consider user customization seriously. I implemented localStorage to persist preferences across sessions. This reflection helped me understand UX consistency and personalization. I also tested how toggling affects different components and animations. I learned that small features significantly improve user satisfaction."
     },
     {
       "text": "Mobile-first design challenged me to think about responsive layouts and touch interactions.",
       "name": "Harka",
-      "date": "2025-12-10 14:05:10"
+      "date": "2025-12-10 14:05:10",
+      "details": "Designing for mobile first forced me to prioritize content hierarchy and usability. Touch interactions required careful placement of buttons and scroll behaviors. I reflected on accessibility and device compatibility. This experience highlighted the importance of testing on multiple screen sizes. Overall, mobile-first thinking improved both design quality and responsiveness."
     },
     {
       "text": "Adding animations made me realize subtle movements improve the overall UX without overwhelming users.",
       "name": "Harka",
-      "date": "2025-12-25 17:44:02"
+      "date": "2025-12-25 17:44:02",
+      "details": "I experimented with scroll animations and transitions to make the site feel lively. Reflection showed me that small, smooth motions enhance user focus and engagement. I also learned not to overdo animations to avoid distraction. Testing timing and easing was important for balance. This reflection reinforced the principle of thoughtful, minimalistic motion design."
     },
     {
       "text": "Saving and fetching JSON data from the backend strengthened my understanding of state management.",
       "name": "Harka",
-      "date": "2025-12-28 20:30:55"
+      "date": "2025-12-28 20:30:55",
+      "details": "I reflected on how data persistence affects user experience and application reliability. Fetching and saving JSON taught me about asynchronous JS patterns and error handling. I realized the importance of consistent data structures for future scalability. This reflection improved my approach to state management and API design. Overall, it gave me confidence in handling dynamic data-driven projects."
     },
     {
       "text": "Testing the Snake game across devices highlighted the importance of flexible controls and accessibility.",
       "name": "Harka",
-      "date": "2026-01-05 22:11:49"
+      "date": "2026-01-05 22:11:49",
+      "details": "Through testing, I observed differences in touch and keyboard interactions. I adjusted control sensitivity and layout for accessibility. Reflection emphasized user testing as a key part of development. I also noted improvements for performance and responsiveness. This reinforced the value of designing with diverse users in mind."
     }
   ]
 }
